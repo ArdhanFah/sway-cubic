@@ -1,0 +1,217 @@
+@import "color.css";
+
+* {
+  color: @lavender;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.5s ease;
+}
+
+window#waybar {
+  background-color: rgba(0, 0, 0, 0); /* full transparan */
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Workspaces --- */
+#workspaces {
+  background-color: @base;
+  border-radius: 10px;
+  padding: 0 6px;
+  margin: 6px 0 6px 8px;
+}
+
+#workspaces button {
+  color: whitesmoke;
+  background: transparent;
+  border-radius: 50%;
+  margin: 2px;
+  padding: 4px 8px;
+  min-width: 22px;
+}
+
+#workspaces button:hover {
+  background-color: shade(@base, 1.15);
+  color: @mauve;
+}
+
+#workspaces button.focused {
+  background-color: @mauve;
+  color: @peach;
+}
+
+/* --- Shared Module Style --- */
+#clock,
+#custom-swap,
+#custom-clipboard,
+#custom-background,
+#battery,
+#cpu,
+#memory,
+#idle_inhibitor,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#mode,
+#tray,
+#mpd {
+  background-color: shade(@base, 1.1);
+  color: @text;
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin: 6px 4px;
+  margin-left: 6px;
+}
+
+/* --- Mode --- */
+#mode {
+  color: @mauve;
+}
+
+/* --- MPD --- */
+#mpd {
+  color: @mauve;
+  background: none;
+}
+
+#mpd.2,
+#mpd.3,
+#mpd.4 {
+  background-color: @base;
+  font-size: 14px;
+}
+
+#mpd.2 {
+  border-radius: 10px 0 0 10px;
+  padding: 6px 10px 6px 8px;
+}
+
+#mpd.3 {
+  border-radius: 0;
+  padding: 6px;
+}
+
+#mpd.4 {
+  border-radius: 0 10px 10px 0;
+  padding: 6px 10px 6px 12px;
+}
+
+/* --- Custom Modules --- */
+#custom-swap {
+  color: @mauve;
+  background-color: @base;
+}
+
+#custom-background {
+  color: white;
+  background-color: @base;
+  border-radius: 0 10px 10px 0;
+}
+
+#custom-launcher {
+  font-size: 14px;
+  background-color: shade(@base, 1.1);
+  color: @mauve;
+/*  border-radius: 0 10px 10px 0;
+  padding: 4px 12px 4px 5px;
+  padding: 6px 12px; */
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin: 6px 4px;
+}
+
+#custom-power {
+  font-size: 14px;
+  color: @red;
+  background-color: shade(@base, 1.1);
+ /*border-radius: 0px 10px 10px 0;
+ padding: 6px 12px; */
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin: 6px 4px;
+}
+
+/* --- Battery --- */
+#battery {
+  color: #d8dee9;
+}
+
+#battery.charging {
+  color: #81a1c1;
+}
+
+#battery.critical:not(.charging) {
+  color: #bf616a;
+  animation: blink 0.5s linear infinite alternate;
+}
+
+@keyframes blink {
+  to {
+    color: @red;
+  }
+}
+
+/* --- CPU & Memory --- */
+#cpu {
+  color: @sky;
+}
+
+#cpu #cpu-icon {
+  color: @sky;
+}
+
+#memory {
+  color: @sky;
+}
+
+/* --- Temperature --- */
+#temperature {
+  color: @teal;
+}
+
+#temperature.critical {
+  color: @red;
+}
+
+/* --- Network --- */
+#network {
+  color: @green;
+}
+
+#network.disabled,
+#network.disconnected {
+  color: #bf616a;
+}
+
+/* --- Audio --- */
+#pulseaudio {
+  color: @flamingo;
+}
+
+#pulseaudio.muted {
+  color: #3b4252;
+}
+
+/* --- Tray --- */
+#tray {
+  margin: 6px 8px;
+  border-radius: 10px;
+}
+
+/* --- Idle Inhibitor --- */
+#idle_inhibitor {
+  background-color: #ebcb8b;
+  color: @base;
+}
+
+/* --- Window Title --- */
+#window {
+  margin: 0 10px;
+  color: #eceff4;
+}

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+cheatsheet=$(cat << EOF
+  SWAY CHEATSHEET
+
+ + Enter = Terminal
+ + B = Browser
+ + C = VSCode
+ + Q = Close Window
+ + F = Fullscreen
+ + Shift + Q = Kill Window
+ + D = Application Launcher (wofi)
+ + Shift + E = Logout Menu
+ + Arrow = Move Focus
+ + Shift + Arrow = Move Window
+
+[ Tekan ESC untuk menutup ]
+EOF
+)
+
+echo "$cheatsheet" | wofi --dmenu --prompt "Cheatsheet" --width=400 --height=400 --hide-scroll --insensitive

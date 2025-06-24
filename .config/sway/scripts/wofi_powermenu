@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+options=(
+  "  Lock"
+  "  Logout"
+  "  Suspend"
+  "  Hibernate"
+  "  Reboot"
+  "⏻  Shutdown"
+)
+
+chosen=$(printf '%s\n' "${options[@]}" | wofi --dmenu --prompt "Power Menu" --width=300 --height=300 --hide-scroll --insensitive)
+
+case "$chosen" in
+  *Lock*) swaylock -f -c 000000 ;;
+  *Logout*) swaymsg exit ;;
+  *Suspend*) systemctl suspend ;;
+  *Hibernate*) systemctl hibernate ;;
+  *Reboot*) systemctl reboot ;;
+  *Shutdown*) systemctl poweroff ;;
+  *) exit 0 ;;
+esac

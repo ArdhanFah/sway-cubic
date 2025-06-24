@@ -1,0 +1,133 @@
+### Header ###
+default_border none
+
+### Variables ###
+set $mod Mod4
+set $term foot
+set $menu wofi --show drun
+set $browser brave-browser --ozone-platform=wayland
+set $code code --ozone-platform=wayland
+set $spotify spotify --ozone-platform=wayland
+
+### Include System Config Vars ###
+include /etc/sway/config-vars.d/*
+
+### Gaps ###
+gaps inner 7px
+gaps outer 7px
+
+### Wallpaper ###
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+### Autostart ###
+#exec_always swaybg -i /.config/sway/backgrounds/02.png -m fill
+exec_always ~/.config/sway/scripts/random-wallpaper.sh
+exec_always waybar
+exec_always swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -f -c 000000'
+exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec_always pgrep Xwayland
+
+### App Launchers ###
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+bindsym $mod+a exec $menu
+bindsym $mod+e exec thunar
+bindsym $mod+b exec $browser
+bindsym $mod+c exec $code
+bindsym $mod+slash exec ~/.config/sway/scripts/cheatsheet
+bindsym $mod+m exec $spotify
+
+### Window Management ###
+bindsym $mod+q kill
+bindsym $mod+Shift+q kill
+
+# Focus movement (Vim)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Workspaces (Switch)
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Workspaces (Move)
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+### Layouts ###
+bindsym $mod+t+h splith
+bindsym $mod+v splitv
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+Backslash layout toggle split
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+z focus parent
+
+floating_modifier $mod normal
+
+### Scratchpad ###
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+### Resize Mode ###
+mode "resize" {
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+### Screenshots ###
+bindsym Print exec grim ~/Pictures/screenshot-$(date +%F_%T).png
+bindsym $mod+Shift+s exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%F_%T).png
+
+### Volume ###
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+### Brightness ###
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+### Wallpaper ###
+bindsym $mod+Shift+Right exec ~/.config/sway/scripts/random-wallpaper.sh
+bindsym $mod+Shift+Left exec ~/.config/sway/scripts/random-wallpaper.sh
+
+### Exit ###
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
+
+### End ###
+include /etc/sway/config.d/*
+

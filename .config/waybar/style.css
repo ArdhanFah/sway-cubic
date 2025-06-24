@@ -1,0 +1,196 @@
+@import "color.css";
+
+* {
+  color: @lavender;
+  border: 0;
+  padding: 0;
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.5s ease;
+}
+
+window#waybar {
+  background-color: shade(#1e1e2e, 0.95);
+  border-bottom: 4px solid shade(@base, 1.1);
+
+  /*border: 0px solid rgba(0, 0, 0, 0);
+   background-color: rgba(0, 0, 0, 0); */
+}
+
+/* --- Workspaces --- */
+#workspaces {
+  background-color: @base;
+  border-radius: 10px;
+  margin: 6px 0 6px 8px;
+  padding: 0 4px;
+}
+
+#workspaces button {
+  color: whitesmoke;
+  margin: 2px 2px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  background: transparent;
+  min-width: 22px;
+}
+
+#workspaces button:hover {
+  background-color: shade(@base, 1.15);
+  color: @mauve;
+}
+
+#workspaces button.focused {
+  background-color: @mauve;
+  color: @base;
+}
+
+/* --- Modules (compact) --- */
+#clock,
+#custom-swap,
+#custom-clipboard,
+#custom-background,
+#battery,
+#cpu,
+#memory,
+#idle_inhibitor,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#mode,
+#tray {
+  padding: 4px 8px;
+  background-color: shade(@base, 1.1);
+  border-radius: 10px;
+  margin: 6px 3px;
+}
+
+/* --- Mode --- */
+#mode {
+  color: @mauve;
+  margin-right: 4px;
+}
+
+
+/* --- Custom --- */
+#custom-swap {
+  color: @mauve;
+  background-color: @base;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+
+#custom-background {
+  color: white;
+  background-color: @base;
+  border-radius: 0 10px 10px 0;
+  padding: 4px 12px 4px 5px;
+}
+
+#custom-launcher {
+  font-size: 18px;
+  background-color: shade(@base, 1.1);
+  color: @mauve;
+  border-radius: 0 10px 10px 0;
+  padding: 4px 12px 4px 5px;
+}
+
+#custom-power {
+  font-size: 18px;
+  color: @red;
+  background-color: shade(@base, 1.1);
+  border-radius: 10px 0 0 10px;
+  padding: 4px 12px 4px 5px;
+}
+
+/* --- Battery --- */
+#battery {
+  color: #d8dee9;
+  border-radius: 0 10px 10px 0;
+  margin-right: 6px;
+}
+
+#battery.charging {
+  color: #81a1c1;
+}
+
+#battery.critical:not(.charging) {
+  color: #bf616a;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  to {
+    color: @red;
+  }
+}
+
+/* --- CPU & Memory --- */
+#cpu {
+  color: @sky;
+}
+
+#cpu #cpu-icon {
+  color: @sky;
+}
+
+#memory {
+  color: @sky;
+  border-radius: 10px 10px 10px 10px;
+  margin-right: 6px;
+}
+
+/* --- Temperature --- */
+#temperature {
+  color: @teal;
+  border-radius: 10px 0 0 10px;
+}
+
+#temperature.critical {
+  color: @red;
+}
+
+/* --- Network --- */
+#network {
+  color: @green;
+  border-radius: 10px;
+  margin-right: 6px;
+}
+
+#network.disabled,
+#network.disconnected {
+  color: #bf616a;
+}
+
+/* --- Audio --- */
+#pulseaudio {
+  color: @flamingo;
+  border-radius: 10 10px 10px 10;
+  margin-right: 6px;
+}
+
+#pulseaudio.muted {
+  color: #3b4252;
+}
+
+/* --- Tray --- */
+#tray {
+  margin: 6px 8px;
+  border-radius: 10px;
+}
+
+/* --- Idle Inhibitor --- */
+#idle_inhibitor {
+  background-color: #ebcb8b;
+  color: @base;
+}
+
+/* --- Window Title --- */
+#window {
+  margin: 0 10px;
+  color: #eceff4;
+}
