@@ -17,4 +17,7 @@ echo "🎨 Setup Window Manager & Configs..."
 echo "🔒 Setup Login Manager..."
 ./setup-login-cubic.sh
 
+echo "🎨 Setup MOTD..."
+./setup-motd-cubic.sh
+
 echo "✅ Semua setup selesai."
