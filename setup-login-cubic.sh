@@ -30,4 +30,10 @@ cd ly
 zig build
 zig build install
 
-echo "✅ LY selesai diinstall. Aktifin servicenya nanti di sistem final."
+echo "✅ LY selesai diinstall."
+echo "🔧 Setup LY supaya auto aktif pas boot..."
+# Pastikan systemd structure ada
+mkdir -p /etc/systemd/system/getty.target.wants
+# Bikin symlink manual kayak systemctl enable biasanya
+ln -sf /etc/systemd/system/ly.service /etc/systemd/system/getty.target.wants/ly.service
+echo "✅ LY bakal otomatis aktif pas boot di sistem final."
