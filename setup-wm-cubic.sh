@@ -14,7 +14,7 @@ cp -r .config/* /etc/skel/.config/
 # Pastikan script punya executable permission
 echo "🔧 Set executable permission untuk scripts..."
 chmod -R +x /etc/skel/.config/sway/scripts
-chmod +x /etc/skel/.config/waybar/scripts/swap.sh
+chmod -R +x /etc/skel/.config/waybar/scripts
 
 echo "🔤 Copy fonts tambahan ke /etc/skel"
 mkdir -p /etc/skel/.local/share/fonts
