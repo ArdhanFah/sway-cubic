@@ -26,6 +26,10 @@ else
     echo "cat /etc/motd sudah ada di .bashrc, tidak perlu ditambah lagi."
 fi
 
+# Cek apakah bukan SSH session
+if [ -z "$SSH_CONNECTION" ]; then
+    cat /etc/motd
+fi
 echo "Selesai. Buka terminal baru untuk melihat hasilnya."
 
 echo "MOTD berhasil diperbarui!"
