@@ -16,12 +16,12 @@ Semua konfigurasi Window Manager, Terminal, Waybar, Fonts, hingga Login Manager 
   - `.config/wofi` → Launcher Config
   - `.config/foot` → Terminal Config
 - Setup otomatis:
-  - `setup.sh` → Master installer, panggil semua setup
-  - `setup-tools.sh` → Install DevOps Tools (Docker, Ansible, Terraform, dsb)
-  - `setup-apps.sh` → Install GUI apps (Brave, VSCode, Spotify)
-  - `setup-wm.sh` → Setup Window Manager + copy config
-  - `setup-login.sh` → Install & setup LY Login Manager
-  - `setup-motd.sh` → MOTD custom saat terminal dibuka
+  - `setup-install-cubic.sh` → Master installer, panggil semua setup
+  - `setup-tools-cubic.sh` → Install DevOps Tools (Docker, Ansible, Terraform, dsb)
+  - `setup-apps-cubic.sh` → Install GUI apps (Brave, VSCode, Spotify)
+  - `setup-wm-cubic.sh` → Setup Window Manager + copy config
+  - `setup-login-cubic.sh` → Install & setup LY Login Manager
+  - `setup-motd-cubic.sh` → MOTD custom saat terminal dibuka
   - `cleanup.sh` → Bersih-bersih sistem, buang sampah build & cache
 
 ---
