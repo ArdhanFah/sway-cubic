@@ -63,4 +63,34 @@ WantedBy=getty.target
 EOF
 
 ln -sf /etc/systemd/system/ly.service /etc/systemd/system/getty.target.wants/ly.service
+
+echo "📁 Buat flag /etc/nolive supaya LY gak aktif di Live mode..."
+echo "Hapus file ini setelah install untuk mengaktifkan LY." > /etc/nolive
+
+echo "⚙️ Setup auto-hapus /etc/nolive di boot pertama hasil install..."
+
+cat <<'EOF' > /usr/local/bin/cleanup-nolive.sh
+#!/usr/bin/env bash
+set -e
+rm -f /etc/nolive
+rm -f /etc/systemd/system/multi-user.target.wants/cleanup-nolive.service
+EOF
+
+chmod +x /usr/local/bin/cleanup-nolive.sh
+
+cat <<EOF > /etc/systemd/system/cleanup-nolive.service
+[Unit]
+Description=Auto-hapus /etc/nolive di boot pertama
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/cleanup-nolive.sh
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+ln -sf /etc/systemd/system/cleanup-nolive.service /etc/systemd/system/multi-user.target.wants/cleanup-nolive.service
+
 echo "✅ LY bakal otomatis aktif pas boot di sistem final."
