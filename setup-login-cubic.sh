@@ -50,6 +50,7 @@ Description=LY Display Manager
 After=systemd-user-sessions.service
 After=systemd-logind.service
 After=getty@tty1.service
+ConditionPathExists=!/etc/nolive
 
 [Service]
 ExecStart=/usr/local/bin/ly
